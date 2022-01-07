@@ -1,4 +1,10 @@
-<p class="my-4">Notification Component below:</p>
+<p class="my-4">Notification Component using vcerb syntax below:</p>
+
+<Notification title="my title">
+  Hello, world
+</Notification>
+
+<p class="my-4">Notification Component using <var>render</var> below:</p>
 
 <%= render(NotificationComponent.new(title: "my title")) do %>
   Hello, World!
