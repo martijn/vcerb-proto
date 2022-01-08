@@ -1,9 +1,14 @@
 # VCERB prototype
 
 This project explores a way to conveniently render [View Components](https://viewcomponent.org) using
-a custom ActionView template handler.
+Va custom ActionView template handler.
+
+When successful, this will be rewritten as a gem to include in a Rails app.
 
 ## What is VCERB?
+
+VCERB syntax allows developers to instiate View Components using HTML tags,
+not unlike React or Blazor.
 
 Example:
 
@@ -19,6 +24,12 @@ Example:
 <%= render(NotificationComponent.new(title: "my title")) do %>
   Hello, World!
 <% end %>
+```
+
+To include literal Ruby in params:
+
+```erbruby
+<Notification title={@title.upcase} />
 ```
 
 ## Running the example
