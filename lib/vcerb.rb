@@ -48,7 +48,7 @@ class VCERB < ActionView::Template::Handlers::ERB
     (
       str.scan(%r{(?<key>\w+)={(?<value>.*)}}).map do |key, value|
         puts "Found ruby: #{key} = #{value}" if @debug
-        "#{key}: #{eval(value).to_s.inspect}"
+        "#{key}: (#{value})"
       end +
       str.scan(%r{(?<key>\w+)="(?<value>.*?)"}).map do |key, value|
         puts "Found string: #{key} = #{value}" if @debug
