@@ -4,10 +4,22 @@
   Hello, world
 </Notification>
 
-<p class="my-4">Notification Component using <var>render</var> below:</p>
+<p class="my-4">Notification Component without content:</p>
 
-<%= render(NotificationComponent.new(title: "my title")) do %>
-  Hello, World!
-<% end %>
+<Notification title="Just a title" />
+
+<p class="my-4">Notification Component with Ruby code params:</p>
+
+<Notification title={Time.now.to_s}>The date is <%= Date.today %></Notification>
+
+<p class="my-4">Or, again, without content:</p>
+
+<Notification title={"Just a title, but with time: " + Time.now.to_s} />
+
+<p class="my-4">Mixing it all together:</p>
+
+<Notification
+  title="A title"
+  closeBtn={false}>This has a close button</Notification>
 
 <p class="my-4">End of demo</p>
