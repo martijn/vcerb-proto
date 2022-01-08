@@ -1,24 +1,26 @@
-# README
+# VCERB prototype
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project explores a way to conveniently render [View Components](https://viewcomponent.org) using
+a custom ActionView template handler.
 
-Things you may want to cover:
+## What is VCERB?
 
-* Ruby version
+Example:
 
-* System dependencies
+```erbruby
+<!-- VCERB syntax -->
 
-* Configuration
+<Notification title="my title">
+  Hello, world
+</Notification>
 
-* Database creation
+<!-- Standard ViewComponent syntax -->
 
-* Database initialization
+<%= render(NotificationComponent.new(title: "my title")) do %>
+  Hello, World!
+<% end %>
+```
 
-* How to run the test suite
+## Running the example
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Bundle, rails server, open localhost:3000.
