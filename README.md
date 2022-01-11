@@ -35,3 +35,9 @@ To include literal Ruby in params:
 ## Running the example
 
 Bundle, rails server, open localhost:3000.
+
+## Notable files in the example
+
+- [app/views/page/index.html.vcerb](app/views/page/index.html.vcerb) a demo vcerb view
+- [lib/vcerb.rb](lib/vcerb.rb) the template handler
+- [config/initializers/vcerb.rb](config/initializers/vcerb.rb) an initializer that registers the template handler
