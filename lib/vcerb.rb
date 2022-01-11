@@ -1,18 +1,11 @@
 class VCERB < ActionView::Template::Handlers::ERB
   def initialize
-    @debug = true
+    @debug = false
     super
   end
 
-  def load_components
-    # TODO eager load all notification components using zeitwerk
-    NotificationComponent
-
-    @components ||= ObjectSpace.each_object(Class).select { |c| c < ViewComponent::Base }
-  end
-
   def call(template, source)
-    load_components
+    @components ||= load_components
 
     @components.each do |component|
       tag_name = component.to_s.sub(/Component\Z/, "")
@@ -55,5 +48,12 @@ class VCERB < ActionView::Template::Handlers::ERB
         "#{key}: #{value.inspect}"
       end
     ).join(", ")
+  end
+
+  def load_components
+    # Force eager loading of the Rals app in development so we can find the view components in ObjectSpace
+    Zeitwerk::Loader.eager_load_all
+
+    ObjectSpace.each_object(Class).select { |c| c < ViewComponent::Base }
   end
 end
